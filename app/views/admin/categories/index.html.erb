@@ -1,0 +1,19 @@
+<h1>Categories</h1>
+<br>
+<tr>
+  <td>
+    <ul>
+      <% @categories.each do |category| %>
+        <li><%= link_to category.name, category %></li><%= link_to fa_icon('trash'), [:admin, category], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+        <br>
+      <% end %>
+    </ul>
+  </td>
+</tr>
+
+<%= form_for @category, url: {action: "create"} do |f| %>
+  <%= f.text_field :name %>
+  <%= f.submit "Create" %>
+<% end %>
+
+
